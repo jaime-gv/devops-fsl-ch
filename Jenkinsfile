@@ -11,18 +11,35 @@ pipeline {
       }
     }
      
-    stage('Build') {
+    stage('Install') {
       steps {
-        sh 'pip install -r requirements.txt'
         sh 'npm install'
       }
     }  
-    
-            
-    stage('Test') {
+             
+    stage('Linter') {
       steps {
-        sh 'node test'
+        sh 'npm run lint'
       }
     }
+
+    stage('Formatter') {
+      steps {
+        sh 'npm run prettier'
+      }
+    }
+    
+     stage('Test') {
+      steps {
+        sh 'npm run test'
+      }
+    }
+    
+     stage('Build') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+     
   }
 }
