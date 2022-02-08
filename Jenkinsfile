@@ -10,18 +10,5 @@ pipeline {
         git 'https://github.com/jaime-gv/devops-fsl-ch.git'
       }
     }
-     
-    stage('Build') {
-      steps {
-        echo 'Succeed Build'
-      }
-    }  
-    
-            
-    stage('Test') {
-      steps {
-        echo 'Succeeded Test'
-      }
-    }
   }
 }
