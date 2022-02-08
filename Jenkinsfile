@@ -1,7 +1,5 @@
 pipeline {
   agent any
-
-  agent {
     
   tools {nodejs "nodejs"}
     
