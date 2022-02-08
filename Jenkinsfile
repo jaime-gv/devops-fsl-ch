@@ -7,7 +7,7 @@ pipeline {
         
     stage('Git') {
       steps {
-        git git branch: 'dev-ch', url: 'https://github.com/jaime-gv/devops-fsl-ch.git'
+        git branch: 'dev-ch', url: 'https://github.com/jaime-gv/devops-fsl-ch.git'
       }
     }
      
