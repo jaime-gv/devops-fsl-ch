@@ -10,5 +10,18 @@ pipeline {
         git 'https://github.com/jaime-gv/devops-fsl-ch.git'
       }
     }
+     
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
+    }  
+    
+            
+    stage('Test') {
+      steps {
+        sh 'node test'
+      }
+    }
   }
 }
