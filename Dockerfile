@@ -1,4 +1,5 @@
-FROM node:8.12-alpine
+FROM node:11.12.0-alpine
+RUN apk update && apk add python make g++
 EXPOSE 8080
 WORKDIR /app
 COPY . .
