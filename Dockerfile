@@ -1,8 +1,8 @@
-FROM node:16.14.0
+FROM node:11.12.0-alpine
+RUN apk update && apk add python make g++
 WORKDIR /app
-COPY package.json .
-RUN npm config set python python2.7
-RUN npm install --force
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json ./
+RUN npm install
 COPY . ./
-EXPOSE 3000
-CMD ["node", "start"]
+CMD ["npm", "start"]

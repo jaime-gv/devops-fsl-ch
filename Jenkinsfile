@@ -1,21 +1,20 @@
 pipeline {
-  agent {
-    label 'docker' 
-  }
-
+  agent any
+    
+  tools {nodejs "node"}
   stages {
-   stage('Docker node test') {
-      agent {
-        docker {
-          // Set both label and image
-          label 'docker'
-          image 'node:16-alpine'
-          args '--name docker-node' // list any args
-        }
-      }     
+        
+    stage('Git') {
       steps {
-        sh 'node --version'
+        git branch: 'dev-ch', url: 'https://github.com/jaime-gv/devops-fsl-ch.git'
       }
-   }
+    }
+     
+    stage('Install') {
+      steps {
+        sh 'npm install'
+      }
+    }  
+     
   }
- }
+}
