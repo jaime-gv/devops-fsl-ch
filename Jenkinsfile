@@ -12,7 +12,7 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t devopsfsl .'
+        sh 'docker build -t devopsfsl . && docker run -it devopsfsl'
       }  
    }
  }
