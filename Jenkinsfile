@@ -14,6 +14,6 @@ pipeline {
       steps {
         sh 'docker build -t devopsfsl .'
       }  
-  }
+   }
+ }
 }
-
