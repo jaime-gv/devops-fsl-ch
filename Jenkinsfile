@@ -18,7 +18,8 @@ pipeline {
    stage('Docker Push') {
       agent any
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'Jimmy.2022', usernameVariable: 'jimmygv2')]) {
+        //withCredentials([usernamePassword(credentialsId: 'myregistry-login', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')])
+        withCredentials([usernamePassword(credentialsId: passwordVariable: 'Jimmy.2022', usernameVariable: 'jimmygv2')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh 'docker push devopsfsl'
         }
