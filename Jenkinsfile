@@ -1,20 +1,12 @@
 pipeline {
-  agent any
-    
-  tools {nodejs "node"}
-  stages {
-        
-    stage('Git') {
-      steps {
-        git branch: 'dev-ch', url: 'https://github.com/jaime-gv/devops-fsl-ch.git'
-      }
+    agent {
+        docker { image 'node:16.13.1-alpine' }
     }
-     
-    stage('Install') {
-      steps {
-        sh 'npm install'
-      }
-    }  
-     
-  }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
 }
