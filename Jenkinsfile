@@ -18,8 +18,11 @@ pipeline {
    stage('Docker Push') {
       agent any
       steps {
-        withCredentials([string(credentialsId: 'Jimmy.2022', variable: 'dockerhubpwd')]) {
-          sh 'docker login -u jimmygv2 -p ${dockerhubpwd}'
+        withCredentials([string(credentialsId: 'docker-login-creds', passwordVariable: 'Jimmy.2022', usernameVariable: 'jimmygv2')]) {
+          sh '''
+                            echo "${password} | docker login -u ${username} --password-stdin"
+                         '''
+          //sh 'docker login -u jimmygv2 -p ${dockerhubpwd}'
           sh 'docker push devopsfsl'
         }
       }
