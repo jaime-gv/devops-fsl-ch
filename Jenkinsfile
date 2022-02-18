@@ -1,25 +1,40 @@
 pipeline {
   agent any
-    
-  tools {nodejs "node"}
+  
+  environment {
+        //once you sign up for Docker hub, use that user_id here
+        registry = "jimmygv2/nodeapp"
+        dockerImage = ''
+        registryCredential = 'dockerhub_id'
+    }
+  
   stages {
         
-    stage('Git') {
+    stage('Checkout') {
       steps {
         git branch: 'dev-ch', url: 'https://github.com/jaime-gv/devops-fsl-ch.git'
       }
     }
-    stage('Docker Build') {
-      agent any
-      steps {
-        sh 'docker build -t devopsfsl . '
-      }  
-   }
-   stage('Docker Push') {
-      agent any
-      steps {
-          sh 'docker push devopsfsl'
+    
+     // Building Docker images
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry
         }
       }
     }
+    
+    // Uploading Docker images into Docker Hub
+    stage('Upload Image') {
+     steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
+        }
+      }
+    }
+    
+  }
 }
