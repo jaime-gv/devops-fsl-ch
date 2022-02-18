@@ -5,7 +5,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 RUN npm install
 RUN npm install eslint -D
-RUN yarn add prettier -D
+RUN npm install -g prettier
 COPY . ./
 EXPOSE 3000
 CMD ["npm", "start"]
