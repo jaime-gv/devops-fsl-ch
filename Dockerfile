@@ -7,7 +7,6 @@ RUN npm install
 RUN npm install eslint -D
 RUN npm install -g prettier
 RUN npm install-ci-test
-RUN CI=true npm run test
 COPY . ./
 EXPOSE 3000
 CMD ["npm", "start"]
