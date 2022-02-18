@@ -5,8 +5,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 RUN npm install
 RUN npm install eslint -D
+RUN npm lint init
 RUN npm install -g prettier
-RUN npm run build
 COPY . ./
 EXPOSE 3000
 CMD ["npm", "start"]
