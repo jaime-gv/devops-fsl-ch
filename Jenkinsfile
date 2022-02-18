@@ -17,7 +17,7 @@ pipeline {
     }
     
      // Building Docker images
-    stage('Build Image NPM-LINT install') {
+    stage('Build Image NPM install LINT-PRETTIER-TEST') {
       steps{
         script {
           dockerImage = docker.build registry
