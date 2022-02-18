@@ -17,7 +17,7 @@ pipeline {
     }
     
      // Building Docker images
-    stage('Building image') {
+    stage('Build Image NPM-LINT install') {
       steps{
         script {
           dockerImage = docker.build registry
@@ -26,7 +26,7 @@ pipeline {
     }
     
     // Uploading Docker images into Docker Hub
-    stage('Upload Image') {
+    stage('Upload Image DockerHub') {
      steps{    
          script {
             docker.withRegistry( '', registryCredential ) {
