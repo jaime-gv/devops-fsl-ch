@@ -26,7 +26,7 @@ pipeline {
     }
     
     // Uploading Docker images into Docker Hub
-    stage('Upload Image DockerHub') {
+    stage('Upload Image DockerHub!') {
      steps{    
          script {
             docker.withRegistry( '', registryCredential ) {

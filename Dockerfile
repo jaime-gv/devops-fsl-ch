@@ -8,7 +8,6 @@ RUN npm install eslint -D
 RUN npm install -g prettier
 RUN npm install test
 RUN npm install jest
-RUN npm run build
 COPY . ./
 EXPOSE 3000
 CMD ["npm", "start"]
